@@ -1,7 +1,6 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
 
 export const Newsletter = () => {
@@ -9,7 +8,6 @@ export const Newsletter = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically integrate with your newsletter service
     toast.success("Thank you for subscribing to our newsletter!");
     setEmail("");
   };
@@ -24,7 +22,7 @@ export const Newsletter = () => {
           viewport={{ once: true }}
         >
           <div className="mb-8">
-            <Mail className="w-12 h-12 text-ct-primary mx-auto mb-4" />
+            <div className="w-16 h-1 bg-ct-primary mx-auto mb-8" />
             <h2 className="text-3xl md:text-4xl font-bold text-ct-dark mb-4">
               Stay Updated
             </h2>
@@ -40,15 +38,14 @@ export const Newsletter = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-lg border border-ct-primary/20 focus:outline-none focus:border-ct-primary"
+                className="flex-1 px-4 py-3 rounded-lg border border-ct-primary/20 focus:outline-none focus:border-ct-primary bg-white"
                 required
               />
               <button
                 type="submit"
-                className="px-6 py-3 bg-ct-primary text-white rounded-lg font-medium hover:bg-ct-primary/90 transition-colors group flex items-center justify-center gap-2"
+                className="px-6 py-3 bg-ct-primary text-white rounded-lg font-medium hover:opacity-90 transition-opacity"
               >
                 Subscribe
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
           </form>

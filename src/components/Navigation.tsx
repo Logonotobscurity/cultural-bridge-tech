@@ -1,7 +1,6 @@
 
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export const Navigation = () => {
@@ -22,8 +21,16 @@ export const Navigation = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-ct-primary/10">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="font-bold text-ct-dark text-xl">
-            Cultural Technology
+          <Link 
+            to="/" 
+            className="font-bold text-ct-dark text-xl tracking-wider"
+            style={{
+              backgroundImage: "linear-gradient(45deg, #222222, #333333)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent"
+            }}
+          >
+            ÀṢÀ TECH
           </Link>
 
           {/* Desktop Navigation */}
@@ -43,22 +50,22 @@ export const Navigation = () => {
             ))}
             <Link
               to="#donate"
-              className="px-4 py-2 bg-ct-primary text-white rounded-lg text-sm font-medium hover:bg-ct-primary/90 transition-colors"
+              className="px-4 py-2 bg-ct-primary text-white rounded-lg text-sm font-medium hover:opacity-90 transition-opacity"
             >
-              Donate
+              Support
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden"
+            className="md:hidden px-3 py-2 border border-ct-primary/10 rounded"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {isMenuOpen ? (
-              <X className="w-6 h-6 text-ct-dark" />
-            ) : (
-              <Menu className="w-6 h-6 text-ct-dark" />
-            )}
+            <div className="space-y-1">
+              <span className={`block w-4 h-0.5 bg-ct-primary transform transition ${isMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
+              <span className={`block w-4 h-0.5 bg-ct-primary transition ${isMenuOpen ? 'opacity-0' : ''}`}></span>
+              <span className={`block w-4 h-0.5 bg-ct-primary transform transition ${isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
+            </div>
           </button>
         </div>
       </div>
@@ -89,10 +96,10 @@ export const Navigation = () => {
               ))}
               <Link
                 to="#donate"
-                className="block px-4 py-2 bg-ct-primary text-white rounded-lg text-sm font-medium hover:bg-ct-primary/90 transition-colors text-center"
+                className="block px-4 py-2 bg-ct-primary text-white rounded-lg text-sm font-medium hover:opacity-90 transition-opacity text-center"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Donate
+                Support
               </Link>
             </div>
           </motion.div>
