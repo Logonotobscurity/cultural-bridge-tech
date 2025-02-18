@@ -23,14 +23,9 @@ export const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           <Link 
             to="/" 
-            className="font-bold text-ct-dark text-xl tracking-wider"
-            style={{
-              backgroundImage: "linear-gradient(45deg, #222222, #333333)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent"
-            }}
+            className="font-bold text-ct-dark text-xl tracking-[0.2em] uppercase"
           >
-            ÀṢÀ TECH
+            ÀṢÀ
           </Link>
 
           {/* Desktop Navigation */}
@@ -39,7 +34,7 @@ export const Navigation = () => {
               <Link
                 key={link.to}
                 to={link.to}
-                className={`text-sm font-medium transition-colors ${
+                className={`text-sm font-medium transition-colors tracking-wide ${
                   location.pathname === link.to
                     ? "text-ct-primary"
                     : "text-ct-secondary hover:text-ct-primary"
@@ -48,9 +43,10 @@ export const Navigation = () => {
                 {link.label}
               </Link>
             ))}
+            <div className="h-4 w-px bg-ct-primary/10" />
             <Link
               to="#donate"
-              className="px-4 py-2 bg-ct-primary text-white rounded-lg text-sm font-medium hover:opacity-90 transition-opacity"
+              className="text-sm font-medium text-ct-primary hover:text-ct-dark transition-colors tracking-wide"
             >
               Support
             </Link>
@@ -58,13 +54,13 @@ export const Navigation = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden px-3 py-2 border border-ct-primary/10 rounded"
+            className="md:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            <div className="space-y-1">
-              <span className={`block w-4 h-0.5 bg-ct-primary transform transition ${isMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
-              <span className={`block w-4 h-0.5 bg-ct-primary transition ${isMenuOpen ? 'opacity-0' : ''}`}></span>
-              <span className={`block w-4 h-0.5 bg-ct-primary transform transition ${isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
+            <div className="space-y-1.5">
+              <span className={`block w-6 h-px bg-ct-primary transform transition-transform ${isMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`} />
+              <span className={`block w-6 h-px bg-ct-primary transition-opacity ${isMenuOpen ? 'opacity-0' : ''}`} />
+              <span className={`block w-6 h-px bg-ct-primary transform transition-transform ${isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`} />
             </div>
           </button>
         </div>
@@ -79,12 +75,12 @@ export const Navigation = () => {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-white border-t border-ct-primary/10"
           >
-            <div className="px-4 py-4 space-y-4">
+            <div className="px-4 py-6 space-y-6">
               {links.map((link) => (
                 <Link
                   key={link.to}
                   to={link.to}
-                  className={`block text-sm font-medium transition-colors ${
+                  className={`block text-sm font-medium transition-colors tracking-wide ${
                     location.pathname === link.to
                       ? "text-ct-primary"
                       : "text-ct-secondary hover:text-ct-primary"
@@ -94,9 +90,10 @@ export const Navigation = () => {
                   {link.label}
                 </Link>
               ))}
+              <div className="h-px w-full bg-ct-primary/10" />
               <Link
                 to="#donate"
-                className="block px-4 py-2 bg-ct-primary text-white rounded-lg text-sm font-medium hover:opacity-90 transition-opacity text-center"
+                className="block text-sm font-medium text-ct-primary hover:text-ct-dark transition-colors tracking-wide"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Support
